@@ -40,22 +40,25 @@ with open('./results/resnets/resnet56 vs resnet20(x3).pkl', 'rb') as input:
     experiment = pickle.load(input)
 
 # Single
+print('\nLoading Trained Model')
 check_path = [c for c in check_paths if models[0] in c][0]
 net = ResNet56()
 net = load_model_single(net, check_path, device)
+print('\nCalculating Training Stats')
 tr_top1, tr_top5, _ = single_test_accuracies(net, trainloader, device)
+print('\nCalculating Validation Stats')
 va_top1, va_top5, va_time = single_test_accuracies(net, testloader, device)
 
+print('\nSaving changes into Experiment')
 experiment.singlebest_tr_top5 = va_top1
 experiment.singlebest_va_top5 = va_top5
 experiment.singletestset_inf_time = va_time
 experiment.single.model_weights = net.state_dict()
 
-
 with open('./results/resnets/resnet56 vs resnet20(x3).t7', 'wb') as obj:
     experiment = pickle.dump(experiment, obj, pickle.HIGHEST_PROTOCOL)
 
-
+print('\nExiting')
 exit()
 
 #state_single = experiment.single

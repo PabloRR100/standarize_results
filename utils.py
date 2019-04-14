@@ -95,6 +95,7 @@ def single_test_accuracies(net, testloader, device):
     start = time.time()
     
     net.eval()
+    net.to(device)
     prec1, prec5 = list(), list()
 
     with torch.no_grad():
