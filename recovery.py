@@ -94,7 +94,7 @@ collect(model, paths)
 
 
             
-with open('./results/resnet56 vs resnet20(x3).pkl', 'rb') as input:
+with open('./results/resnets/resnet56 vs resnet20(x3).pkl', 'rb') as input:
     aaa = pickle.load(input)
             
 
