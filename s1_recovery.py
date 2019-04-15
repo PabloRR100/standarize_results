@@ -81,7 +81,7 @@ def collect(model, paths, small):
         for n in range(r.m):
             ensemble['net_{}'.format(n)] = torch.load(ch_e[n], map_location=device)
         m.model_weights = ensemble
-                
+                s
         # Gather
         # ------
         e.name = p + ' vs ' + m.name.lower()
@@ -89,6 +89,8 @@ def collect(model, paths, small):
             pickle.dump(e, j, pickle.HIGHEST_PROTOCOL)
         with open(os.path.join(path_results, model, (e.name + '.json')), 'wb') as j:
             json.dump(e.__tojson__())
+            
+        j = e.__tojson__()
 #        import jsonpickle
 #        json_object = jsonpickle.encode(e)
 #        with open('data.json', 'w') as outfile:
