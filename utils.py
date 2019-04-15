@@ -1,5 +1,6 @@
 
 import os
+import json
 import torch
 from collections import OrderedDict
 
@@ -20,13 +21,15 @@ class model_Template():
         self.best_va_top5 = None
         self.tr_epoch_time = None
         self.testset_inf_time = None
-        # Model Weights
-        self.model_weights = None
+        
         #  Full training results
         self.tr_loss = None
-        self.tr_acc = None
+        self.tr_accy = None
         self.va_loss = None
-        self.va_acc = None
+        self.va_accy = None
+        
+        # Model Weights
+        self.model_weights = None
         
     def __repr__(self):
         
@@ -34,8 +37,20 @@ class model_Template():
         attrs = vars(self)
         attrs = {k:v for k,v in attrs.items() if k in printable}
         return ', '.join("\n%s: %s" % item for item in attrs.items())
+    
+    def __json__(self):
         
-   
+        return dict(
+            name = self.name,
+            best_acc = self.best_acc,
+            train_epoch_time = self.tr_epoch_time,
+            test_set_inference_time = self.testset_inf_time,
+            tr_loss = self.tr_loss,
+            tr_accy = self.tr_accy,
+            va_loss = self.va_loss,
+            va_accy = self.va_accy)
+        
+
 class experiment_Template():
     
     def __init__(self):
@@ -48,12 +63,17 @@ class experiment_Template():
         
         attrs = vars(self)
         return ', '.join("\n\n%s: %s" % item for item in attrs.items())
+    
+    def __tojson__(self):
+        
+        return dict(name = self.name,
+                    single = self.single.__json__(), 
+                    ensemble = self.ensemble.__json__())
 
+#i = json.dumps(e.single.__json__(), indent=4)
+#j = json.dumps(e.ensemble.__json__(), indent=4)
+#j = json.dumps(mod.__json__(), indent=4)
 
-def pickle_to_json():
-    # 1 pickle to python dict
-    # 2 dict to JSON
-    pass
 
 
 # =============================================================================
