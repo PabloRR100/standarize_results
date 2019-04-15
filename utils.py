@@ -11,6 +11,7 @@ class model_Template():
     
     def __init__(self):
         
+        # Training Summary
         self.name = None
         self.best_acc = None
         self.best_tr_top1 = None
@@ -19,12 +20,20 @@ class model_Template():
         self.best_va_top5 = None
         self.tr_epoch_time = None
         self.testset_inf_time = None
+        # Model Weights
         self.model_weights = None
-        # Full training results
-#        self.tr_loss = None
-#        self.tr_acc = None
-#        self.va_loss = None
-#        self.va_acc = None
+        #  Full training results
+        self.tr_loss = None
+        self.tr_acc = None
+        self.va_loss = None
+        self.va_acc = None
+        
+    def __repr__(self):
+        
+        printable = ['name', 'best_acc', 'tr_epoch_time', 'testset_inf_time']
+        attrs = vars(self)
+        attrs = {k:v for k,v in attrs.items() if k in printable}
+        return ', '.join("\n%s: %s" % item for item in attrs.items())
         
    
 class experiment_Template():
@@ -34,9 +43,16 @@ class experiment_Template():
         self.name = None
         self.single = None
         self.ensemble = None
+        
+    def __repr__(self):
+        
+        attrs = vars(self)
+        return ', '.join("\n\n%s: %s" % item for item in attrs.items())
 
 
 def pickle_to_json():
+    # 1 pickle to python dict
+    # 2 dict to JSON
     pass
 
 
