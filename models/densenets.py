@@ -1,12 +1,14 @@
-'''DenseNet in PyTorch.'''
-import math
 
+'''DenseNet in PyTorch.'''
+
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 
 class Bottleneck(nn.Module):
+    
     def __init__(self, in_planes, growth_rate):
         super(Bottleneck, self).__init__()
         self.bn1 = nn.BatchNorm2d(in_planes)
@@ -22,6 +24,7 @@ class Bottleneck(nn.Module):
 
 
 class Transition(nn.Module):
+    
     def __init__(self, in_planes, out_planes):
         super(Transition, self).__init__()
         self.bn = nn.BatchNorm2d(in_planes)

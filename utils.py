@@ -4,76 +4,32 @@ import json
 import torch
 from collections import OrderedDict
 
-# =========
-# TEMPLATES
-# =========
 
-class model_Template():
-    
-    def __init__(self):
-        
-        # Training Summary
-        self.name = None
-        self.best_acc = None
-        self.best_tr_top1 = None
-        self.best_tr_top5 = None
-        self.best_va_top1 = None
-        self.best_va_top5 = None
-        self.tr_epoch_time = None
-        self.testset_inf_time = None
-        
-        #  Full training results
-        self.tr_loss = None
-        self.tr_accy = None
-        self.va_loss = None
-        self.va_accy = None
-        
-        # Model Weights
-        self.model_weights = None
-        
-    def __repr__(self):
-        
-        printable = ['name', 'best_acc', 'tr_epoch_time', 'testset_inf_time']
-        attrs = vars(self)
-        attrs = {k:v for k,v in attrs.items() if k in printable}
-        return ', '.join("\n%s: %s" % item for item in attrs.items())
-    
-    def __json__(self):
-        
-        return dict(
-            name = self.name,
-            best_acc = self.best_acc,
-            train_epoch_time = self.tr_epoch_time,
-            test_set_inference_time = self.testset_inf_time,
-            tr_loss = self.tr_loss,
-            tr_accy = self.tr_accy,
-            va_loss = self.va_loss,
-            va_accy = self.va_accy)
-        
+# =============================================================================
+# Load files to Google Drive
+# =============================================================================
 
-class experiment_Template():
-    
-    def __init__(self):
-        
-        self.name = None
-        self.single = None
-        self.ensemble = None
-        
-    def __repr__(self):
-        
-        attrs = vars(self)
-        return ', '.join("\n\n%s: %s" % item for item in attrs.items())
-    
-    def __tojson__(self):
-        
-        return dict(name = self.name,
-                    single = self.single.__json__(), 
-                    ensemble = self.ensemble.__json__())
-
-#i = json.dumps(e.single.__json__(), indent=4)
-#j = json.dumps(e.ensemble.__json__(), indent=4)
-#j = json.dumps(mod.__json__(), indent=4)
-
+#from pydrive.auth import GoogleAuth
+#from pydrive.drive import GoogleDrive
+#
+#gauth = GoogleAuth()
+#gauth.LocalWebserverAuth()
+#
+#def creteFolder(name):
+#    file_metadata = {'name': name, 
+#                     'mimetype': 'application/vnd.google-apps.folder'}
+#    file = drive_service.files().create(body=file_metadata, fields='id').execute()
+#    print('Folder ID: %s' % file.get('id'))
+#
+#def uploadFile(filename, filepath, filetype):
+#    
+#    file_metadata = {'name': filename}
+#    media = MediaFileUpload(filepath, mimetype=filetype)
+#    file = drive_service.files().create(body=file_metadata,
+#                                        media_body=media,
+#                                        fields='id').execute()
+#    print('File ID: %s' % file.get('id'))
+#    return
 
 
 # =============================================================================

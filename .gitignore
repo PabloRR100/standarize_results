@@ -1,0 +1,7 @@
+*.pth
+./idea
+*client_secret.json
+*credentials.json
+experiments
+experiments/
+
