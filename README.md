@@ -2,7 +2,7 @@
 
 In this repo I have included script with 2 purposes:  
   
-1 - Standarization  
+### 1 - Standarization  
 The different experiments have been run using different code and different ways of storing the results.  
 We are using script s1_recovery to extract all of the results and convert them into the same "trusted" format.  
 
@@ -94,5 +94,5 @@ class experiment_Template():
                     ensemble = js(self.ensemble.__json__()))
 ```
 
-2 - 
+### 2 - 
 
