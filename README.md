@@ -1,8 +1,26 @@
 # Results
 
 
-### Organization
+## Organization
 
+### Folders
+- models                  # Code of the models used (vggs, resnets, densenets and playgrounds)  
+- results                 # Collection of the results obtained on the different repos for the each of the models  
+ | -  network name        # e.g. vggs / resnets / densenets / playground  
+    | - net model         # e.g. vgg13 / resnet56 / densenet121 / m64_l32  
+      | - checkpoints     # model weights  
+      | - dicts           # training results stored as pickle objects (Train_Results python class)  
+      | - logs            # .txt files with the information of the training  
+- experiments             # This folder is not found since the files are too big to be stored on Bitbuket -> run `s1_recovery.py` to populate it  
+  | - network name        # vggs / resnets / densenets / playground  
+    | - experiment.json   # single_name vs individual_of_ensemble(x ensemble_size).json  
+    | - experiment.pth    # single_name vs individual_of_ensemble(x ensemble_size).pth  
+  
+  
+    
+
+
+## Objectives
 
 In this repo I have included script with 2 purposes:  
   
