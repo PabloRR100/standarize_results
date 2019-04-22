@@ -93,7 +93,7 @@ def collect(model, paths, small):
         e.single = m
         
         l = levels[0]
-        with open(os.path.join(path_results, model, p, l),'rb') as obj:
+        with open(os.path.join(path_results, model, p, 'dicts', l),'rb') as obj:
             r = pickle.load(obj)
             
         m.name = r.name
@@ -113,7 +113,7 @@ def collect(model, paths, small):
         m = M()
         e.ensemble = m
         l = levels[1]
-        with open(os.path.join(path_results, model, p, l),'rb') as obj:
+        with open(os.path.join(path_results, model, p, 'dicts', l),'rb') as obj:
             r = pickle.load(obj)
             
         m.name = r.name
