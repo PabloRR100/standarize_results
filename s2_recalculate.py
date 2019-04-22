@@ -1,4 +1,15 @@
 
+'''
+
+1 - Load saved experiment from s1_recovery.py
+2 - Load model weights from that template
+3 - Recalculate time metrics (possibly missing accuracy metrics)
+4 - Save experiment with the new metrics addded
+
+'''
+
+
+
 import os
 import glob
 import torch
