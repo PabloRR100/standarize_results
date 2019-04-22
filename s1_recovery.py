@@ -47,16 +47,22 @@ For the results of training we have the prefix Single_ or Ensemble_ with above i
 
 '''
 
-#with open('./results/densenets/densenet121/checkpoints/ensemble.t7', 'rb') as inp:
-#    checkpoint = torch.load(inp, map_location='cpu')
-#   
+
+
+with open('./results/playground/m64_l32/dicts/Ensemble_Non_Recursive_L_6_M_64_BN_False_K_4.pkl', 'rb') as inp:
+    result = pickle.load(inp)
+    aa = [result]
+    
 #with open('./results/densenets/densenet121/checkpoints/single.t7', 'rb') as inp:
 #    checkpoint3 = torch.load(inp, map_location='cpu')
 #aa = [checkpoint, checkpoint3]
-#        with open('./results\\densenets\\densenet121\\Results_Single_Models.pkl', 'rb') as obj:
-#            aa = [pickle.load(obj)]
-#        with open('./results\\densenets\\densenet121\\Results_Ensemble_Models.pkl', 'rb') as obj:
-#            aaa = [pickle.load(obj)]
+#with open('./results\\densenets\\densenet121\\Results_Single_Models.pkl', 'rb') as obj:
+#    aa = [pickle.load(obj)]
+#with open('./results\\densenets\\densenet121\\Results_Ensemble_Models.pkl', 'rb') as obj:
+#    aaa = [pickle.load(obj)]
+
+
+
 
 def collect(model, paths, small):
 
@@ -86,7 +92,15 @@ def collect(model, paths, small):
             single_weights = {k:v for k, v in single_weights.items() if 'net' in k} 
             ensemble_weights = torch.load(ch_e, map_location=device)
             ensemble_weights = {k:v for k, v in ensemble_weights.items() if 'net' in k} 
+        
+        elif model == 'playground':
+            # Paths to model weights
+            ch_s = glob.glob(os.path.join(path_results, model, p, 'checkpoints/*single*'))[0]
+            # Loading weights
             
+        else:
+            print('[ERROR]: Model name not found')
+        
         # Load Single
         
         m = M()
@@ -150,7 +164,7 @@ def collect(model, paths, small):
 model = 'vggs'
 small = 'vgg9'
 paths = ['vgg13', 'vgg19']
-collect(model, paths, small)
+#collect(model, paths, small)
 
 # =======
 # ResNets
@@ -159,7 +173,7 @@ collect(model, paths, small)
 model = 'resnets'
 small = 'resnet20'
 paths = ['resnet56', 'resnet110']
-collect(model, paths, small)
+#collect(model, paths, small)
 
 # =========
 # DenseNets
@@ -168,7 +182,7 @@ collect(model, paths, small)
 model = 'densenets'
 small = 'densenet_cifar'
 paths = ['densenet121']
-collect(model, paths, small)
+#collect(model, paths, small)
 
 # ==========
 # Playground
@@ -176,14 +190,38 @@ collect(model, paths, small)
 
 # CANDIDATES
 model = 'playground'
-small = 'm64_l_32'
+small = 'm64_l32'
+paths = ['m64_l32']
 single = {'L': 32, 'M': 64, 'BN': False} 
+
+# Round 1
 ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
             {'L': 4,  'M': 36, 'BN': False, 'K': 16},
             {'L': 4, 'M': 54, 'BN': False, 'K': 8},
             {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
 
+## Round 2
+#ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
+#            {'L': 4,  'M': 36, 'BN': False, 'K': 16},
+#            {'L': 4, 'M': 54, 'BN': False, 'K': 8},
+#            {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
+#
+#ensemble = [{'L': 32,  'M': 31, 'BN': False, 'K': 4},   # Horizontal Division
+#            {'L': 32,  'M': 21, 'BN': False, 'K': 8},
+#            {'L': 32,  'M': 14, 'BN': False, 'K': 16},
+#            {'L': 2,  'M': 64, 'BN': False, 'K': 4},    # Vertical Division
+#            {'L': 6,  'M': 64, 'BN': False, 'K': 8}]
+#
+## Round 3
+#ensemble = [{'L': 12,  'M': 48, 'BN': False, 'K': 4},       # 3.2 M = 32
+#            {'L': 5,   'M': 48, 'BN': False, 'K': 8},
+#            {'L': 3,   'M': 48, 'BN': False, 'K': 12},
+#            {'L': 1,   'M': 48, 'BN': False, 'K': 16},
+#            {'L': 30,  'M': 32, 'BN': False, 'K': 4},       # 3.2 M = 32
+#            {'L': 13,  'M': 32, 'BN': False, 'K': 8},    
+#            {'L': 8,   'M': 32, 'BN': False, 'K': 12},     
+#            {'L': 5,   'M': 32, 'BN': False, 'K': 16}]    
 
-
+collect(model, paths, small)
 
 
