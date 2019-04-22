@@ -94,5 +94,5 @@ class experiment_Template():
                     ensemble = js(self.ensemble.__json__()))
 ```
 
-### 2 - 
+### 2 - Reproducibility
 
