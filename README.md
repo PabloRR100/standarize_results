@@ -14,8 +14,8 @@ For VGGs and ResNets we have been saving the .pkl objects as the checkpoints in 
 
 - Densenets  
 We have been using checkpoints storing acc, epoch and the state dict of the models:
-    - For the single just checkpoint['net']  
-    - For the ensemble -> checkpoint['net_i'] where i starts on 0 up to the number of networks on the ensemble  
+    - For the single just `checkpoint['net']`  
+    - For the ensemble -> `checkpoint['net_i']` where i starts on 0 up to the number of networks on the ensemble  
     
 - Playground  
 We have used again checkpoints with the unique name L_{}_M_{}_K_{} to store the models.  
