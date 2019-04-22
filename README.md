@@ -2,11 +2,11 @@
 
 ## Index
 1 - Organization  
- 1.1 - Folders  
- 1.2 - Files  
+&nbsp;&nbsp;&nbsp;&nbsp;1.1 - Folders  
+&nbsp;&nbsp;&nbsp;&nbsp;1.2 - Files  
 2 - Objectives  
- 2.1 - Standarization  
- 2.2 - Reproducility    
+&nbsp;&nbsp;&nbsp;&nbsp;2.1 - Standarization  
+&nbsp;&nbsp;&nbsp;&nbsp;2.2 - Reproducility    
 
 ## 1 - Organization
 
