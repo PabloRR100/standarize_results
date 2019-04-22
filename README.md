@@ -19,11 +19,11 @@
   
 ### Files
 
-`data.py`: helpers to load the data  
-`results.py`: class used to store results during training in deprecated repositories  
-`s1_recovery.py`: script to gather result from previous experiments and populate `experiment` folder  
-`templates.py`: class used to store results of the experiments  
-`utils.py`: helpers  
+- `data.py`: helpers to load the data  
+- `results.py`: class used to store results during training in deprecated repositories  
+- `s1_recovery.py`: script to gather result from previous experiments and populate `experiment` folder  
+- `templates.py`: class used to store results of the experiments  
+- `utils.py`: helpers  
 
 
 
