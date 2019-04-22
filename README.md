@@ -1,5 +1,9 @@
 # Results
 
+
+### Organization
+
+
 In this repo I have included script with 2 purposes:  
   
 ### 1 - Standarization  
@@ -38,9 +42,7 @@ class model_Template():
         self.name = None
         self.best_acc_epoch = None
         self.best_tr_top1 = None
-        self.best_tr_top5 = None
         self.best_va_top1 = None
-        self.best_va_top5 = None
         self.tr_epoch_time = None
         self.testset_inf_time = None
         
@@ -53,23 +55,6 @@ class model_Template():
         # Model Weights
         self.model_weights = None
         
-    def __repr__(self):
-        
-        printable = ['name', 'best_acc', 'tr_epoch_time', 'testset_inf_time']
-        attrs = vars(self)
-        attrs = {k:v for k,v in attrs.items() if k in printable}
-        return ', '.join("\n%s: %s" % item for item in attrs.items())
-    
-    def __json__(self):
-        
-        return dict(
-            name = self.name,
-            best_acc = self.best_va_top1,
-            best_acc_epoch = self.best_acc_epoch,
-            train_epoch_time = self.tr_epoch_time,
-            test_set_inference_time = self.testset_inf_time,
-            tr_loss = NoIndent(self.tr_loss), tr_accy = NoIndent(self.tr_accy),
-            va_loss = NoIndent(self.va_loss), va_accy = NoIndent(self.va_accy))
 ```
 
 And the following template is for an experiment, where we compare a single model with an ensemble of models of the same budget.  
@@ -78,20 +63,9 @@ class experiment_Template():
     
     def __init__(self):
         
-        self.name = None
-        self.single = None
-        self.ensemble = None
-        
-    def __repr__(self):
-        
-        attrs = vars(self)
-        return ', '.join("\n\n%s: %s" % item for item in attrs.items())
-    
-    def __tojson__(self):
-        
-        return dict(name = self.name,
-                    single = js(self.single.__json__()), 
-                    ensemble = js(self.ensemble.__json__()))
+        self.name = None        # Name of the experiment
+        self.single = None      # Single Model Populted Template
+        self.ensemble = None    # Esemble Model Populated Template (tr_loss and so on will be OrderedDicts of each of the individuals) 
 ```
 
 ### 2 - Reproducibility
