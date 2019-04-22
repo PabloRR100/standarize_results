@@ -1,9 +1,16 @@
 # Results
 
+## Index
+1 - Organization  
+&nbsp;&nbsp;&nbsp;&nbsp;1.1 - Folders  
+&nbsp;&nbsp;&nbsp;&nbsp;1.2 - Files  
+2 - Objectives  
+&nbsp;&nbsp;&nbsp;&nbsp;2.1 - Standarization  
+&nbsp;&nbsp;&nbsp;&nbsp;2.2 - Reproducility    
 
-## Organization
+## 1 - Organization
 
-### Folders
+### 1.1 - Folders
 - `models`                  # Code of the models used (vggs, resnets, densenets and playgrounds)  
 - `results`                 # Collection of the results obtained on the different repos for the each of the models  
  | -  `network name`        # e.g. vggs / resnets / densenets / playground  
@@ -17,7 +24,7 @@
     | - `experiment.pth`    # single_name vs individual_of_ensemble(x ensemble_size).pth  
   
   
-### Files
+### 1.2 - Files
 
 - `data.py`: helpers to load the data  
 - `results.py`: class used to store results during training in deprecated repositories  
@@ -28,11 +35,11 @@
 
 
 
-## Objectives
+## 2 - Objectives
 
 In this repo I have included script with 2 purposes:  
   
-### 1 - Standarization  
+### 2.1 - Standarization  
 The different experiments have been run using different code and different ways of storing the results.  
 We are using script s1_recovery to extract all of the results and convert them into the same "trusted" format.  
 
@@ -94,5 +101,9 @@ class experiment_Template():
         self.ensemble = None    # Esemble Model Populated Template (tr_loss and so on will be OrderedDicts of each of the individuals) 
 ```
 
-### 2 - Reproducibility
+### 2.2 - Reproducibility
+
+
+
+
 
