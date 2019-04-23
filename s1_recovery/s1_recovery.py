@@ -21,7 +21,7 @@ from templates import MyEncoder
 
 path_models = './models'
 path_results = './results'
-path_experiments = './experiments'
+path_experiments = '../experiments'
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 levels = ['Results_Single_Models.pkl', 'Results_Ensemble_Models.pkl', 'Results_Testing.pkl']
 
