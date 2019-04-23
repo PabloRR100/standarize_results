@@ -10,7 +10,10 @@
 
 ## 1 - Organization
 
-### 1.1 - Folders
+### s1_Recovery --> Functionality for gathering and standardizing results from all different experiment setups
+
+#### 1.1 - Folders
+
 - `models`                  # Code of the models used (vggs, resnets, densenets and playgrounds)  
 - `results`                 # Collection of the results obtained on the different repos for the each of the models  
  | -  `network name`        # e.g. vggs / resnets / densenets / playground  
@@ -23,8 +26,7 @@
     | - `experiment.json`   # single_name vs individual_of_ensemble(x ensemble_size).json  
     | - `experiment.pth`    # single_name vs individual_of_ensemble(x ensemble_size).pth  
   
-  
-### 1.2 - Files
+#### 1.2 - Files
 
 - `data.py`: helpers to load the data  
 - `results.py`: class used to store results during training in deprecated repositories  
@@ -33,7 +35,7 @@
 - `templates.py`: class used to store results of the experiments  
 - `utils.py`: helpers  
 
-
+### s2_scripts --> Functionality for having a common tested setup to run any future experiment
 
 ## 2 - Objectives
 
