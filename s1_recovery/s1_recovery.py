@@ -19,6 +19,16 @@ from templates import model_Template as M
 from templates import experiment_Template as E
 from templates import MyEncoder
 
+import sys
+sys.path.append(os.path.abspath('../models'))
+sys.path
+
+## TODO: Problem Loading Weights
+import models
+from models.resnets import *
+from models import resnets, densenets, playground
+
+
 path_models = './models'
 path_results = './results'
 path_experiments = '../experiments'
@@ -57,7 +67,6 @@ For the results of training we have the prefix Single_ or Ensemble_ with above i
         SoA experiments compares 1 singles model vs 1 ensemble of models
         Playground experiments compares 1 single model vs many ensembles of models
     
-
 '''
 
     
@@ -114,8 +123,11 @@ def collect(model, paths, small):
             
             ensemble_weights = list()
             for c in ch_e:
+                print(c)
+                exit()
                 weights = torch.load(c, map_location=device)
-                ensemble_weights = {k:v for k, v in ensemble_weights.items() if 'net' in k} 
+                weights = {k:v for k, v in ensemble_weights.items() if 'net' in k} 
+                ensemble_weights.append(weights)
                 
         else:
             print('[ERROR]: Model name not found')
@@ -234,6 +246,10 @@ collect(model, paths, small)
 #
 #with open('./results/playground/m64_l32/dicts/Single_Non_Recursive_L_32_M_64_BN_False.pkl', 'wb') as f:
 #            pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
+
+result = torch.load('./results\playground\m64_l32\checkpoints\Ensemble_Non_Recursive_L_13_M_32_BN_False_K_8.t7', map_location='cpu')
+aa = [result]
+
 
 ## Round 1
 #ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
