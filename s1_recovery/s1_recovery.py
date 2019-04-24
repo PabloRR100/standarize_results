@@ -23,7 +23,8 @@ path_models = './models'
 path_results = './results'
 path_experiments = '../experiments'
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-levels = ['Results_Single_Models.pkl', 'Results_Ensemble_Models.pkl', 'Results_Testing.pkl']
+levels = {'state_of_art': ['Results_Single_Models.pkl', 'Results_Ensemble_Models.pkl'],
+          'playground': ['Single_', 'Ensemble_']}
 
 '''
 
@@ -47,31 +48,20 @@ For the results of training we have the prefix Single_ or Ensemble_ with above i
 
 '''
 
-
-
-with open('./results/playground/m64_l32/dicts/Ensemble_Non_Recursive_L_6_M_64_BN_False_K_4.pkl', 'rb') as inp:
-    result = pickle.load(inp)
-    aa = [result]
     
-#with open('./results/densenets/densenet121/checkpoints/single.t7', 'rb') as inp:
-#    checkpoint3 = torch.load(inp, map_location='cpu')
-#aa = [checkpoint, checkpoint3]
-#with open('./results\\densenets\\densenet121\\Results_Single_Models.pkl', 'rb') as obj:
-#    aa = [pickle.load(obj)]
-#with open('./results\\densenets\\densenet121\\Results_Ensemble_Models.pkl', 'rb') as obj:
-#    aaa = [pickle.load(obj)]
-
-
-
 
 def collect(model, paths, small):
 
+    global levels
     for p in paths:
     
         # Init Experiment
+        
         e = E()
         
         if model == 'vggs' or model == 'resnets':
+            # Path to dicts
+            levels = levels['state_of_art']
             # Paths to model weights
             regex = re.compile(r'{}'.format(small), re.IGNORECASE)
             ch = glob.glob(os.path.join(path_results, model, p, 'checkpoints/*.pkl'))  ## This changes for densenets and playground
@@ -84,6 +74,8 @@ def collect(model, paths, small):
                 ensemble_weights['net_{}'.format(n)] = torch.load(c, map_location=device)
                 
         elif model == 'densenets':
+            # Path to dicts
+            levels = levels['state_of_art']
             # Paths to model weigths
             ch_s = glob.glob(os.path.join(path_results, model, p, 'checkpoints/*single*'))[0]
             ch_e = glob.glob(os.path.join(path_results, model, p, 'checkpoints/*ensemble*'))[0]
@@ -94,8 +86,14 @@ def collect(model, paths, small):
             ensemble_weights = {k:v for k, v in ensemble_weights.items() if 'net' in k} 
         
         elif model == 'playground':
+            # Path to dicts
+            levels = levels['playground']
+            dict_s = glob.glob(os.path.join(path_results, model, small, 'dicts/*single*'))[0]
+            dict_e = glob.glob(os.path.join(path_results, model, small, 'dicts/*ensemble*'))
+
             # Paths to model weights
-            ch_s = glob.glob(os.path.join(path_results, model, p, 'checkpoints/*single*'))[0]
+            ch_s = glob.glob(os.path.join(path_results, model, small, 'checkpoints/*single*'))[0]
+            ch_e = glob.glob(os.path.join(path_results, model, small, 'checkpoints/*ensemble*'))
             # Loading weights
             
         else:
@@ -106,10 +104,15 @@ def collect(model, paths, small):
         m = M()
         e.single = m
         
-        l = levels[0]
-        with open(os.path.join(path_results, model, p, 'dicts', l),'rb') as obj:
-            r = pickle.load(obj)
-            
+        if model != 'playground':
+            l = levels[0]
+            with open(os.path.join(path_results, model, p, 'dicts', l),'rb') as obj:
+                r = pickle.load(obj)
+        
+        else:
+            l = levels[0]
+            l = glob
+        
         m.name = r.name
         m.best_acc_epoch = int(np.argmax(r.valid_accy))
         m.best_va_top1 = max(r.valid_accy)
@@ -190,27 +193,38 @@ paths = ['densenet121']
 
 # CANDIDATES
 model = 'playground'
-small = 'm64_l32'
-paths = ['m64_l32']
 single = {'L': 32, 'M': 64, 'BN': False} 
+small = 'm{M}_l{L}'.format(**single)
+paths = [single]
 
-# Round 1
-ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
-            {'L': 4,  'M': 36, 'BN': False, 'K': 16},
-            {'L': 4, 'M': 54, 'BN': False, 'K': 8},
-            {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
+collect(model, paths, small)
 
+
+with open('./results/playground/m64_l32/dicts/Ensemble_Non_Recursive_L_6_M_64_BN_False_K_4.pkl', 'rb') as inp:
+    result = pickle.load(inp)
+    aa = [result]
+
+
+## Round 1
+#ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
+#            {'L': 4,  'M': 36, 'BN': False, 'K': 16},
+#            {'L': 4, 'M': 54, 'BN': False, 'K': 8},
+#            {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
+#
 ## Round 2
 #ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
 #            {'L': 4,  'M': 36, 'BN': False, 'K': 16},
 #            {'L': 4, 'M': 54, 'BN': False, 'K': 8},
 #            {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
 #
-#ensemble = [{'L': 32,  'M': 31, 'BN': False, 'K': 4},   # Horizontal Division
-#            {'L': 32,  'M': 21, 'BN': False, 'K': 8},
-#            {'L': 32,  'M': 14, 'BN': False, 'K': 16},
-#            {'L': 2,  'M': 64, 'BN': False, 'K': 4},    # Vertical Division
-#            {'L': 6,  'M': 64, 'BN': False, 'K': 8}]
+#ensemble = [{'L': 32, 'M': 31, 'BN': False, 'K': 4},   # Horizontal Division
+#            {'L': 32, 'M': 21, 'BN': False, 'K': 8},
+#            {'L': 32, 'M': 17, 'BN': False, 'K': 12},
+#            {'L': 32, 'M': 14, 'BN': False, 'K': 16},
+#            
+#            {'L': 6, 'M': 64, 'BN': False, 'K': 4},    # Vertical Division
+#            {'L': 2, 'M': 64, 'BN': False, 'K': 8},
+#            {'L': 1, 'M': 64, 'BN': False, 'K': 12},]
 #
 ## Round 3
 #ensemble = [{'L': 12,  'M': 48, 'BN': False, 'K': 4},       # 3.2 M = 32
@@ -221,7 +235,5 @@ ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
 #            {'L': 13,  'M': 32, 'BN': False, 'K': 8},    
 #            {'L': 8,   'M': 32, 'BN': False, 'K': 12},     
 #            {'L': 5,   'M': 32, 'BN': False, 'K': 16}]    
-
-collect(model, paths, small)
 
 
