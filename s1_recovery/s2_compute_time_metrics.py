@@ -4,48 +4,64 @@
 - Load Models from Previous Experiments
 - Calculate Epoch Time
 - Calculate Testset Inference Time  --> Would this depend on the batch size?
+- Load Experiments
+- Save metrics into corresponding experiments
 """
 
 import os
 import re
+import sys
 import glob
 import torch
 import pickle
 import numpy as np
 from results import *
 from data import dataloaders
-from collections import OrderedDict as OD
 from templates import model_Template as M
 from templates import experiment_Template as E
-from templates import MyEncoder
-
-import sys
 sys.path.append(os.path.abspath('../models'))
-sys.path
-
-# Data
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-trainloader, testloader, classes = dataloaders('CIFAR', 128)
-
-## TODO: Problem Loading Weights
-import sys
-sys.path.append(os.path.abspath('../models'))
-from models import *
-from models.resnets import *
 
 
+# Paths
 path_models = './models'
 path_results = './results'
 path_experiments = '../experiments'
+
+# Data
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-levels = {'state_of_art': {'single': 'Results_Single_Models.pkl', 
-                           'ensemble': 'Results_Ensemble_Models.pkl'},
-          'playground': {'single': 'Single_', 
-                         'ensemble': 'Ensemble_'}}
+trainloader, testloader, classes = dataloaders('CIFAR', 128, path='../../datasets')
+
+
+# Models
+
+from models import (vgg9, vgg13, vgg19, 
+                    resnet20, resnet56, resnet110, 
+                    densenet_cifar, densenet121)
+from models import Conv_Net, Conv_Recusive_Net, Conv_Custom_Recusive_Net
+
+
+
+
+# Load Model Object
+def load_model():
     
+    with open(os.path.join(path_experiments, model, (e.name + '.pth')), 'wb') as f:
+        pickle.dump(e, f, pickle.HIGHEST_PROTOCOL)
+
+    return
+
+# Load Experiment Object
+def load_experiment():
+    
+    with open(os.path.join(path_experiments, model, (e.name + '.pth')), 'wb') as f:
+        pickle.dump(e, f, pickle.HIGHEST_PROTOCOL)
+
+    return
+
 
 # Time to inference entire Test Set
-
+def testset_infer_time():
+    pass
 
 
         
