@@ -41,20 +41,11 @@ from models import Conv_Net, Conv_Recusive_Net, Conv_Custom_Recusive_Net
 
 
 
-
-# Load Model Object
-def load_model():
-    
-    with open(os.path.join(path_experiments, model, (e.name + '.pth')), 'wb') as f:
-        pickle.dump(e, f, pickle.HIGHEST_PROTOCOL)
-
-    return
-
 # Load Experiment Object
 def load_experiment():
     
-    with open(os.path.join(path_experiments, model, (e.name + '.pth')), 'wb') as f:
-        pickle.dump(e, f, pickle.HIGHEST_PROTOCOL)
+    with open(os.path.join(path_experiments, model, (e.name + '.pth')), 'rb') as f:
+        e = pickle.load(f)
 
     return
 
