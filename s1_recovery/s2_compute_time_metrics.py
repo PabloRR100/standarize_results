@@ -19,6 +19,7 @@ from results import *
 from data import dataloaders
 from templates import model_Template as M
 from templates import experiment_Template as E
+#sys.path.append(os.path.abspath('..'))
 sys.path.append(os.path.abspath('../models'))
 
 
@@ -38,7 +39,6 @@ from models import (vgg9, vgg13, vgg19,
                     resnet20, resnet56, resnet110, 
                     densenet_cifar, densenet121)
 from models import Conv_Net, Conv_Recusive_Net, Conv_Custom_Recusive_Net
-
 
 
 # Load Experiment Object
