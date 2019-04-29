@@ -32,19 +32,12 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 trainloader, testloader, classes = dataloaders('CIFAR', 128, path='../../datasets')
 
 
-# Models
-
-from models import (vgg9, vgg13, vgg19, 
-                    resnet20, resnet56, resnet110, 
-                    densenet_cifar, densenet121)
-from models import Conv_Net, Conv_Recusive_Net, Conv_Custom_Recusive_Net
-
-
-
 # Load Experiment Object
-def load_experiment():
+def load_experiment(experiment):
     
-    with open(os.path.join(path_experiments, model, (e.name + '.pth')), 'rb') as f:
+    global path_experiments
+    path = glob.glob(path_experiment + experiment)
+    with open(os.path.join(path_experiments, model, (name + '.pth')), 'rb') as f:
         e = pickle.load(f)
 
     return
@@ -61,15 +54,15 @@ def testset_infer_time():
 # VGGs
 # ====
 
-model = 'vggs'
-small = 'vgg9'
-paths = ['vgg13', 'vgg19']
-#collect(model, paths, small)
+from models import vgg9, vgg13, vgg19
+experiments = ['vgg13, vgg19']
+experiment = load_experiment(experiment[0])
 
 # =======
 # ResNets
 # =======
 
+from models import resnet20, resnet56, resnet110, 
 model = 'resnets'
 small = 'resnet20'
 paths = ['resnet56', 'resnet110']
@@ -79,6 +72,7 @@ paths = ['resnet56', 'resnet110']
 # DenseNets
 # =========
 
+from models import densenet_cifar, densenet121
 model = 'densenets'
 small = 'densenet_cifar'
 paths = ['densenet121']
@@ -88,6 +82,7 @@ paths = ['densenet121']
 # Playground
 # ==========
 
+from models import Conv_Net, Conv_Recusive_Net, Conv_Custom_Recusive_Net
 # CANDIDATES
 model = 'playground'
 single = {'L': 32, 'M': 64, 'BN': False} 

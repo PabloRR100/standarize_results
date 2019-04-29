@@ -79,41 +79,41 @@ exit()
 
 
 #
-#check_paths = [c for c in check_paths if small in c]
-#net = ResNet20()
-##for c in check_paths:
-#
-## Ensemble
-#
-#def load_weights_ensemble(check_path):
-#    assert os.path.exists(check_path), 'Error: no checkpoint directory found!'
-#    checkpoint = torch.load(check_path, map_location=device)
-#    new_state_dict = OrderedDict()
-#    
-#    # Remove module. in case training was done using Parallelization
-#    for k,v in checkpoint['net_{}'.format(n)].state_dict().items():
-#        name = k.replace('module.', '')
-#        new_state_dict[name] = v
-#    return new_state_dict 
-#
-#    # Remove unnecesary keys in case model was trained in a different PyTorch version
-#    model_dict = net.state_dict()
-#    pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
-#    model_dict.update(pretrained_dict) 
-#    net.load_state_dict(pretrained_dict)
-#    
-#    
-#def load_model_ensemble(net, check_path, device):    
-#    net.load_state_dict(load_weights(check_path)) # remove word `module`
-#    net.to(device)
-#    if device == 'cuda': 
-#        net = torch.nn.DataParallel(net)
-#    return net
-#    
-#for n,net in enumerate(ensemble.values()):
-#    net = load_model(net, n+1, check_path, device)
-#    
-#
+check_paths = [c for c in check_paths if small in c]
+net = ResNet20()
+#for c in check_paths:
+
+# Ensemble
+
+def load_weights_ensemble(check_path):
+    assert os.path.exists(check_path), 'Error: no checkpoint directory found!'
+    checkpoint = torch.load(check_path, map_location=device)
+    new_state_dict = OrderedDict()
+    
+    # Remove module. in case training was done using Parallelization
+    for k,v in checkpoint['net_{}'.format(n)].state_dict().items():
+        name = k.replace('module.', '')
+        new_state_dict[name] = v
+    return new_state_dict 
+
+    # Remove unnecesary keys in case model was trained in a different PyTorch version
+    model_dict = net.state_dict()
+    pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
+    model_dict.update(pretrained_dict) 
+    net.load_state_dict(pretrained_dict)
+    
+    
+def load_model_ensemble(net, check_path, device):    
+    net.load_state_dict(load_weights(check_path)) # remove word `module`
+    net.to(device)
+    if device == 'cuda': 
+        net = torch.nn.DataParallel(net)
+    return net
+    
+for n,net in enumerate(ensemble.values()):
+    net = load_model(net, n+1, check_path, device)
+    
+
 #
 ## ===================
 ##  Training Top1 Top5 
