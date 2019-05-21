@@ -1,0 +1,296 @@
+==> Preparing data..
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+
+
+ VGG Architectures
+
+
+
+VGG13 vs VGG9(x3)
+
+
+VGG13
+'run_epoch'  23056.67 ms
+'run_epoch'  14679.85 ms
+'run_epoch'  14677.58 ms
+'run_epoch'  14688.13 ms
+'inference'  1526.64 ms
+'inference'  1529.92 ms
+'inference'  1534.31 ms
+'inference'  1531.06 ms
+
+Training Epoch Time :  16.775595009326935
+
+Test set Inference Time :  1.5305177569389343
+
+
+VGG9 x 3
+'run_epoch'  8717.88 ms
+'run_epoch'  8748.97 ms
+'run_epoch'  9302.11 ms
+'run_epoch'  9061.03 ms
+'run_epoch'  8665.43 ms
+'run_epoch'  8753.88 ms
+'run_epoch'  8858.37 ms
+'run_epoch'  8787.63 ms
+'run_epoch'  8871.52 ms
+'run_epoch'  8923.83 ms
+'run_epoch'  9142.74 ms
+'run_epoch'  8813.98 ms
+'inference'  1225.77 ms
+'inference'  1255.20 ms
+'inference'  1252.71 ms
+'inference'  1229.52 ms
+'inference'  1323.22 ms
+'inference'  1251.64 ms
+'inference'  1236.09 ms
+'inference'  1266.84 ms
+'inference'  1225.42 ms
+'inference'  1252.92 ms
+'inference'  1325.91 ms
+'inference'  1234.17 ms
+
+Training Epoch Time :  26.661941647529602
+
+Test set Inference Time :  3.769951283931732
+
+
+
+VGG19 vs VGG9(x7)
+
+
+VGG19
+'run_epoch'  26763.64 ms
+'run_epoch'  26879.96 ms
+'run_epoch'  26909.43 ms
+'run_epoch'  26911.98 ms
+'inference'  2953.05 ms
+'inference'  2949.63 ms
+'inference'  2951.75 ms
+'inference'  2949.85 ms
+
+Training Epoch Time :  26.866296112537384
+
+Test set Inference Time :  2.951102554798126
+
+
+VGG9 x 7
+'run_epoch'  8852.89 ms
+'run_epoch'  8821.98 ms
+'run_epoch'  8991.18 ms
+'run_epoch'  9160.59 ms
+'run_epoch'  8690.30 ms
+'run_epoch'  8774.25 ms
+'run_epoch'  8937.60 ms
+'run_epoch'  8754.22 ms
+'run_epoch'  8756.31 ms
+'run_epoch'  8848.47 ms
+'run_epoch'  8784.01 ms
+'run_epoch'  9011.79 ms
+'run_epoch'  8811.15 ms
+'run_epoch'  8764.72 ms
+'run_epoch'  8826.00 ms
+'run_epoch'  8923.91 ms
+'run_epoch'  8865.34 ms
+'run_epoch'  8855.93 ms
+'run_epoch'  8771.45 ms
+'run_epoch'  8725.72 ms
+'run_epoch'  8896.60 ms
+'run_epoch'  8858.54 ms
+'run_epoch'  8818.50 ms
+'run_epoch'  8815.88 ms
+'run_epoch'  8739.55 ms
+'run_epoch'  8706.25 ms
+'run_epoch'  8790.76 ms
+'run_epoch'  8965.65 ms
+'inference'  1282.82 ms
+'inference'  1272.48 ms
+'inference'  1259.48 ms
+'inference'  1252.55 ms
+'inference'  1254.44 ms
+'inference'  1242.57 ms
+'inference'  1268.96 ms
+'inference'  1242.83 ms
+'inference'  1261.65 ms
+'inference'  1272.02 ms
+'inference'  1247.60 ms
+'inference'  1217.92 ms
+'inference'  1246.12 ms
+'inference'  1247.89 ms
+'inference'  1270.38 ms
+'inference'  1220.76 ms
+'inference'  1246.11 ms
+'inference'  1265.44 ms
+'inference'  1234.40 ms
+'inference'  1234.12 ms
+'inference'  1255.24 ms
+'inference'  1264.62 ms
+'inference'  1265.94 ms
+'inference'  1267.83 ms
+'inference'  1319.45 ms
+'inference'  1300.22 ms
+'inference'  1258.90 ms
+'inference'  1244.52 ms
+
+Training Epoch Time :  61.88012742996216
+
+Test set Inference Time :  8.804541826248169
+
+
+
+
+ Resnet Architectures
+
+
+
+Resnet56 vs Resnet20(x3)
+
+
+Resnet56
+'run_epoch'  16168.99 ms
+'run_epoch'  15910.25 ms
+'run_epoch'  16015.86 ms
+'run_epoch'  16136.37 ms
+'inference'  1316.82 ms
+'inference'  1348.47 ms
+'inference'  1306.14 ms
+'inference'  1316.21 ms
+
+Training Epoch Time :  16.057900488376617
+
+Test set Inference Time :  1.321938931941986
+
+
+Resnet20 x 3
+'run_epoch'  9270.24 ms
+'run_epoch'  9026.08 ms
+'run_epoch'  8894.80 ms
+'run_epoch'  8848.47 ms
+'run_epoch'  8920.22 ms
+'run_epoch'  9716.62 ms
+'run_epoch'  9158.61 ms
+'run_epoch'  9023.01 ms
+'run_epoch'  8996.37 ms
+'run_epoch'  8857.24 ms
+'run_epoch'  9368.81 ms
+'run_epoch'  9313.47 ms
+'inference'  1280.31 ms
+'inference'  1280.25 ms
+'inference'  1235.41 ms
+'inference'  1254.85 ms
+'inference'  1257.00 ms
+'inference'  1212.65 ms
+'inference'  1264.70 ms
+'inference'  1363.86 ms
+'inference'  1319.65 ms
+'inference'  1235.03 ms
+'inference'  1268.45 ms
+'inference'  1287.94 ms
+
+Training Epoch Time :  27.348580300807953
+
+Test set Inference Time :  3.8151224851608276
+
+
+
+Resnet110 vs Resnet20(x6)
+
+
+Resnet110
+'run_epoch'  31031.02 ms
+'run_epoch'  30823.88 ms
+'run_epoch'  30898.05 ms
+'run_epoch'  31418.47 ms
+'inference'  1731.46 ms
+'inference'  1739.81 ms
+'inference'  1662.09 ms
+'inference'  1658.61 ms
+
+Training Epoch Time :  31.042888700962067
+
+Test set Inference Time :  1.6980206966400146
+
+
+Resnet20 x 6
+'run_epoch'  9297.02 ms
+'run_epoch'  9128.27 ms
+'run_epoch'  9021.79 ms
+'run_epoch'  9228.10 ms
+'run_epoch'  8909.94 ms
+'run_epoch'  9153.09 ms
+'run_epoch'  8808.84 ms
+'run_epoch'  8938.19 ms
+'run_epoch'  8890.64 ms
+'run_epoch'  10145.09 ms
+'run_epoch'  9038.70 ms
+'run_epoch'  8974.77 ms
+'run_epoch'  9223.11 ms
+'run_epoch'  8912.64 ms
+'run_epoch'  9020.15 ms
+'run_epoch'  9809.13 ms
+'run_epoch'  9177.55 ms
+'run_epoch'  9017.02 ms
+'run_epoch'  9258.12 ms
+'run_epoch'  9397.65 ms
+'run_epoch'  9754.11 ms
+'run_epoch'  9131.63 ms
+'run_epoch'  8974.23 ms
+'run_epoch'  8744.06 ms
+'inference'  1258.83 ms
+'inference'  1305.80 ms
+'inference'  1365.22 ms
+'inference'  1459.18 ms
+'inference'  1292.35 ms
+'inference'  1268.64 ms
+'inference'  1274.96 ms
+'inference'  1319.74 ms
+'inference'  1311.40 ms
+'inference'  1313.97 ms
+'inference'  1341.11 ms
+'inference'  1320.18 ms
+'inference'  1374.44 ms
+'inference'  1366.49 ms
+'inference'  1319.61 ms
+'inference'  1318.44 ms
+'inference'  1307.71 ms
+'inference'  1248.61 ms
+'inference'  1307.68 ms
+'inference'  1309.06 ms
+'inference'  1372.52 ms
+'inference'  1288.70 ms
+'inference'  1278.67 ms
+'inference'  1343.53 ms
+
+Training Epoch Time :  54.98865628242493
+
+Test set Inference Time :  7.9168901443481445
+
+
+
+
+ Densenet Architectures
+
+
+
+Densenet121 vs DensenetCifar(x6)
+
+
+Densenet121
+'run_epoch'  67617.28 ms
+'run_epoch'  67620.46 ms
+'run_epoch'  67593.74 ms
+'run_epoch'  67543.39 ms
+'inference'  4655.75 ms
+'inference'  4652.77 ms
+'inference'  4656.63 ms
+'inference'  4656.04 ms
+
+Training Epoch Time :  67.59375351667404
+
+Test set Inference Time :  4.655329644680023
+
+
+DensenetCifar x 6
