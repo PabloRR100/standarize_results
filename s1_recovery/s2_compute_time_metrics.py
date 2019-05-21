@@ -228,7 +228,6 @@ print('\nTest set Inference Time : ', inference_time)
 
 for ens in ensemb:
     
-    ens = ensemb[0]
     L, M, _, K = ens.values()
     print('\n\nPlayground L={}, M={}, K={}'.format(L,M,K))
     
