@@ -24,39 +24,18 @@ sys.path.append(os.path.abspath('../models'))
 
 # Paths
 path_models = './models'
-path_results = './results'
-path_experiments = '../experiments'
 
 # Data
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 trainloader, testloader, classes = dataloaders('CIFAR', 128, path='../../datasets')
 
-
-# Load Experiment Object
-def load_experiment(experiment):
-    
-    global path_experiments
-    path = glob.glob(path_experiment + experiment)
-    with open(os.path.join(path_experiments, model, (name + '.pth')), 'rb') as f:
-        e = pickle.load(f)
-
-    return
-
-
-# Time to inference entire Test Set
-def testset_infer_time():
-    pass
-
-
-        
+   
 
 # ====
 # VGGs
 # ====
 
 from models import vgg9, vgg13, vgg19
-experiments = ['vgg13, vgg19']
-experiment = load_experiment(experiment[0])
 
 # =======
 # ResNets
