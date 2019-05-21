@@ -8,7 +8,7 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 
 
 @timeit
-def inference(net, optimizer, criterion, epoch, dataloader, device):
+def inference(net, optimizer, criterion, dataloader, device):
     
     net.eval()
     with torch.no_grad():

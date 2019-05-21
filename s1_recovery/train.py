@@ -7,10 +7,9 @@ import torch.multiprocessing
 torch.multiprocessing.set_sharing_strategy('file_system')
 
 
-def train(net, optimizer, criterion, epoch, dataloader, device):
+def train(net, optimizer, criterion, dataloader, device):
     
     net.train()
-    print('\nEpoch: %d' % epoch)
 
     for batch_idx, (inputs, targets) in enumerate(dataloader):
         
@@ -28,7 +27,7 @@ def train(net, optimizer, criterion, epoch, dataloader, device):
     return
 
 
-def test(net, optimizer, criterion, epoch, dataloader, device):
+def test(net, optimizer, criterion, dataloader, device):
     
     net.eval()
     with torch.no_grad():
@@ -44,8 +43,8 @@ def test(net, optimizer, criterion, epoch, dataloader, device):
 
 
 @timeit
-def run_epoch(net, optimizer, criterion, epoch, trainloader, testloader, device):
+def run_epoch(net, optimizer, criterion, trainloader, testloader, device):
     
-    train(net, optimizer, criterion, epoch, trainloader, device)
-    test(net, optimizer, criterion, epoch, testloader, device)
+    train(net, optimizer, criterion, trainloader, device)
+    test(net, optimizer, criterion, testloader, device)
 

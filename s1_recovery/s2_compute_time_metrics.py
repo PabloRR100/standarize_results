@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-- Load Models from Previous Experiments
-- Calculate Epoch Time
-- Calculate Testset Inference Time  --> Would this depend on the batch size?
-- Load Experiments
-- Save metrics into corresponding experiments
-"""
 
 import os
 import re
@@ -41,12 +34,12 @@ def cuda(net):
         cudnn.benchmark = True
     return net
 
-def measure_epoch(net, optimizer, criterion, epoch, trainloader, testloader, device):
+def measure_epoch(net, optimizer, criterion, trainloader, testloader, device):
         
     times = list()
     for _ in range(4):
         start = time.time()           
-        run_epoch(net, optimizer, criterion, epoch, trainloader, testloader, device)       
+        run_epoch(net, optimizer, criterion, trainloader, testloader, device)       
         times.append(time.time() - start)
     return np.mean(times)
 
@@ -65,45 +58,46 @@ def measure_inference(net, optimizer, criterion, testloader, device):
 # ====
 
 from models import vgg9, vgg13, vgg19
+print('\n\n\n\n VGG Architectures')
 
-print('\nVGG13 vs VGG9(x3)')
+print('\n\n\nVGG13 vs VGG9(x3)')
 
-print('\nVGG13')
+print('\n\nVGG13')
 net = vgg13
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 1
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-print('\nVGG9 x 3')
+print('\n\nVGG9 x 3')
 net = vgg9
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 3
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 3
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 3
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
 #
 
-print('\nVGG19 vs VGG9(x7)')
+print('\n\n\nVGG19 vs VGG9(x7)')
 
-print('\nVGG19')
+print('\n\nVGG19')
 net = vgg19
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 1
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-print('\nVGG9 x 7')
+print('\n\nVGG9 x 7')
 net = vgg9
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 7
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 7
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 7
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
@@ -115,45 +109,46 @@ print('\nTest set Inference Time : ', inference_time)
 # =======
 
 from models import resnet20, resnet56, resnet110, 
+print('\n\n\n\n Resnet Architectures')
 
-print('\nResnet56 vs Resnet20(x3)')
+print('\n\n\nResnet56 vs Resnet20(x3)')
 
-print('\nResnet56')
+print('\n\nResnet56')
 net = resnet56
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 1
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-print('\nResnet20 x 3')
+print('\n\nResnet20 x 3')
 net = resnet20
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 3
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 3
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 3
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
 #
 
-print('\nResnet110 vs Resnet20(x6)')
+print('\n\n\nResnet110 vs Resnet20(x6)')
 
-print('\nResnet110')
-net = resnet56
+print('\n\nResnet110')
+net = resnet110
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 1
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-print('\nResnet20 x 6')
+print('\n\nResnet20 x 6')
 net = resnet20
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 6
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 6
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 6
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
@@ -164,23 +159,24 @@ print('\nTest set Inference Time : ', inference_time)
 # =========
 
 from models import densenet_cifar, densenet121
+print('\n\n\n\n Densenet Architectures')
 
-print('\nDensenet121 vs DensenetCifar(x6)')
+print('\n\n\nDensenet121 vs DensenetCifar(x6)')
 
-print('\nDensenet121')
-net = resnet56
+print('\n\nDensenet121')
+net = densenet121
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 1
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-print('\nDensenetCifar x 6')
-net = resnet20
+print('\n\nDensenetCifar x 6')
+net = densenet_cifar
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 6
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 6
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 6
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
@@ -191,6 +187,7 @@ print('\nTest set Inference Time : ', inference_time)
 # ========================
 
 from models import Conv_Net
+print('\n\n\n\n Playground Architectures')
 
 single = {'L': 32, 'M': 64, 'BN': False} 
 
@@ -214,18 +211,30 @@ ensemb = [{'L': 32, 'M': 31, 'BN': False, 'K': 4 },   # Horizontal Division
           {'L':  1, 'M': 64, 'BN': False, 'K': 12}]
 
 
-print('\nPlayground for L = 32, M = 64')
+print('\n\nPlayground for L = 32, M = 64')
 name = 'L = 32, M = 64'
-net = Conv_Net()
+net = Conv_Net(name, single['L'], single['M'])
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * 1
 inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-
-'L={}, M={}'
+for ens in ensemb:
+    
+    ens = ensemb[0]
+    L, M, _, K = ens.values()
+    print('\n\nPlayground L={}, M={}, K={}'.format(L,M,K))
+    
+    name = 'L={}, M={}'.format(L,M)
+    net = Conv_Net(name, L, M)
+    net = cuda(net)
+    optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+    epoch_time = measure_epoch(net, optimizer, criterion, trainloader, device) * K
+    inference_time = measure_inference(net, optimizer, criterion, testloader, device) * K
+    print('\nTraining Epoch Time : ', epoch_time)
+    print('\nTest set Inference Time : ', inference_time)
 
 
 # ====================
