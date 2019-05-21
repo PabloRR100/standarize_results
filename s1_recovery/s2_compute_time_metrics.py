@@ -187,7 +187,7 @@ print('\nTest set Inference Time : ', inference_time)
 # ========================
 
 from models import Conv_Net
-print('\n\n\n\n Playground Architectures')
+print('\n\n\n\n Playground Non Recursive Architectures')
 
 single = {'L': 32, 'M': 64, 'BN': False} 
 
@@ -211,7 +211,7 @@ ensemb = [{'L': 32, 'M': 31, 'BN': False, 'K': 4 },   # Horizontal Division
           {'L':  1, 'M': 64, 'BN': False, 'K': 12}]
 
 
-print('\n\nPlayground for L = 32, M = 64')
+print('\n\nPlayground Non Recursive for L = 32, M = 64')
 name = 'L = 32, M = 64'
 net = Conv_Net(name, single['L'], single['M'])
 net = cuda(net)
@@ -242,3 +242,8 @@ for ens in ensemb:
 # ====================
 
 from models import Conv_Recusive_Net
+print('\n\n\n\n Playground Recursive Architectures')
+
+
+
+
