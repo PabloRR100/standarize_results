@@ -2,16 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import os
-import re
 import sys
-import glob
 import time
 import torch
-import pickle
 import numpy as np
 import torch.nn as nn
 import torch.optim as optim
 from data import dataloaders
+from torch.backends import cudnn
 sys.path.append(os.path.abspath('../models'))
 
 # Paths
