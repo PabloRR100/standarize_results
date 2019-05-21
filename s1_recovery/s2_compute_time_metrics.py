@@ -19,7 +19,7 @@ path_models = './models'
 
 # Data
 from train import run_epoch
-from test import inference
+from infer import inference
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 trainloader, testloader, _ = dataloaders('CIFAR', 128, path='../../datasets')
 criterion = nn.CrossEntropyLoss().cuda() if device == 'cuda' else  nn.CrossEntropyLoss()
@@ -107,7 +107,7 @@ print('\nTest set Inference Time : ', inference_time)
 # ResNets
 # =======
 
-from models import resnet20, resnet56, resnet110, 
+from models import resnet20, resnet56, resnet110
 print('\n\n\n\n Resnet Architectures')
 
 print('\n\n\nResnet56 vs Resnet20(x3)')
@@ -236,13 +236,13 @@ for ens in ensemb:
     print('\nTest set Inference Time : ', inference_time)
 
 
-# ====================
-# Playground Recursive
-# ====================
-
-from models import Conv_Recusive_Net
-print('\n\n\n\n Playground Recursive Architectures')
-
+## ====================
+## Playground Recursive
+## ====================
+#
+#from models import Conv_Recusive_Net
+#print('\n\n\n\n Playground Recursive Architectures')
+#
 
 
 

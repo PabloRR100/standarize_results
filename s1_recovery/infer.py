@@ -21,3 +21,4 @@ def inference(net, optimizer, criterion, dataloader, device):
             del loss
             
     return
+
