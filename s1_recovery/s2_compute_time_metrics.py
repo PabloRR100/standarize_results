@@ -64,123 +64,123 @@ def measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
     return np.mean(times)
 
 
-# ====
-# VGGs
-# ====
-
-from models import vgg9, vgg13, vgg19
-print('\n\n\n\n VGG Architectures')
-
-print('\n\n\nVGG13 vs VGG9(x3)')
-
-print('\n\nVGG13')
-net = vgg13
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
-inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
-print('\n\nVGG9 x 3')
-K = 3
-net = vgg9
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
-inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
+## ====
+## VGGs
+## ====
 #
-
-print('\n\n\nVGG19 vs VGG9(x7)')
-
-print('\n\nVGG19')
-net = vgg19
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
-inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
-print('\n\nVGG9 x 7')
-K = 7
-net = vgg9
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
-inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
-
-
-# =======
-# ResNets
-# =======
-
-from models import resnet20, resnet56, resnet110
-print('\n\n\n\n Resnet Architectures')
-
-print('\n\n\nResnet56 vs Resnet20(x3)')
-
-print('\n\nResnet56')
-net = resnet56
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
-inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
-print('\n\nResnet20 x 3')
-K = 3
-net = resnet20
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
-inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
+#from models import vgg9, vgg13, vgg19
+#print('\n\n\n\n VGG Architectures')
 #
-
-print('\n\n\nResnet110 vs Resnet20(x6)')
-
-print('\n\nResnet110')
-net = resnet110
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
-inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
-print('\n\nResnet20 x 6')
-K = 6
-net = resnet20
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
-inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
-
-
-# =========
-# DenseNets
-# =========
-
+#print('\n\n\nVGG13 vs VGG9(x3)')
+#
+#print('\n\nVGG13')
+#net = vgg13
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
+#inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+#print('\n\nVGG9 x 3')
+#K = 3
+#net = vgg9
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
+#inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+##
+#
+#print('\n\n\nVGG19 vs VGG9(x7)')
+#
+#print('\n\nVGG19')
+#net = vgg19
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
+#inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+#print('\n\nVGG9 x 7')
+#K = 7
+#net = vgg9
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
+#inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+#
+#
+## =======
+## ResNets
+## =======
+#
+#from models import resnet20, resnet56, resnet110
+#print('\n\n\n\n Resnet Architectures')
+#
+#print('\n\n\nResnet56 vs Resnet20(x3)')
+#
+#print('\n\nResnet56')
+#net = resnet56
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
+#inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+#print('\n\nResnet20 x 3')
+#K = 3
+#net = resnet20
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
+#inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+##
+#
+#print('\n\n\nResnet110 vs Resnet20(x6)')
+#
+#print('\n\nResnet110')
+#net = resnet110
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
+#inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+#print('\n\nResnet20 x 6')
+#K = 6
+#net = resnet20
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
+#inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
+#
+#
+## =========
+## DenseNets
+## =========
+#
 from models import densenet_cifar, densenet121
-print('\n\n\n\n Densenet Architectures')
-
-print('\n\n\nDensenet121 vs DensenetCifar(x6)')
-
-print('\n\nDensenet121')
-net = densenet121
-optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
-epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
-inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
-print('\nTraining Epoch Time : ', epoch_time)
-print('\nTest set Inference Time : ', inference_time)
+#print('\n\n\n\n Densenet Architectures')
+#
+#print('\n\n\nDensenet121 vs DensenetCifar(x6)')
+#
+#print('\n\nDensenet121')
+#net = densenet121
+#optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+#epoch_time = measure_epoch(net, optimizer, criterion, trainloader, testloader, device) * 1
+#inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
+#print('\nTraining Epoch Time : ', epoch_time)
+#print('\nTest set Inference Time : ', inference_time)
 
 print('\n\nDensenetCifar x 6')
 K = 6
-net = densenet_cifar
+net = densenet_cifar()
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
 epoch_time = measure_epoch_ensemble(net, K, optimizer, criterion, trainloader, testloader, device)
 inference_time = measure_inference_ensemble(net, K, optimizer, criterion, testloader, device)

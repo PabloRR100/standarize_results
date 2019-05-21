@@ -112,7 +112,7 @@ if __name__ == '__main__':
     from utils import count_parameters
     from beautifultable import BeautifulTable as BT
 
-    net = densenet_cifar()
+    densenet_cifar = densenet_cifar()
     densenet121 = DenseNet121()
     densenet169 = DenseNet169()
     densenet201 = DenseNet201()
@@ -126,7 +126,7 @@ if __name__ == '__main__':
 
     table = BT()
     table.append_row(['Model', 'M. of Params'])
-    table.append_row(['DenseNet CIFAR', count_parameters(net)*1e-6])
+    table.append_row(['DenseNet CIFAR', count_parameters(densenet_cifar)*1e-6])
     table.append_row(['DenseNet 121', count_parameters(densenet121)*1e-6])
     table.append_row(['DenseNet 169', count_parameters(densenet169)*1e-6])
     table.append_row(['DenseNet 201', count_parameters(densenet201)*1e-6])
