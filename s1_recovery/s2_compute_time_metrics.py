@@ -176,7 +176,7 @@ inference_time = measure_inference(net, optimizer, criterion, testloader, device
 print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
-print('\nDensenetCifa x 6')
+print('\nDensenetCifar x 6')
 net = resnet20
 net = cuda(net)
 optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
@@ -186,77 +186,50 @@ print('\nTraining Epoch Time : ', epoch_time)
 print('\nTest set Inference Time : ', inference_time)
 
 
+# ========================
+# Playground Non Recursive
+# ========================
+
+from models import Conv_Net
+
+single = {'L': 32, 'M': 64, 'BN': False} 
+
+ensemb = [{'L': 32, 'M': 31, 'BN': False, 'K': 4 },   # Horizontal Division
+          {'L': 32, 'M': 21, 'BN': False, 'K': 8 },
+          {'L': 32, 'M': 17, 'BN': False, 'K': 12},
+          {'L': 32, 'M': 14, 'BN': False, 'K': 16},
+         
+          {'L': 30, 'M': 32, 'BN': False, 'K': 4 },    # Vertical Division (M=32)
+          {'L': 13, 'M': 32, 'BN': False, 'K': 8 },
+          {'L':  8, 'M': 32, 'BN': False, 'K': 12},
+          {'L':  5, 'M': 32, 'BN': False, 'K': 12},
+         
+          {'L': 12, 'M': 48, 'BN': False, 'K': 4 },    # Vertical Division (M=48)
+          {'L':  4, 'M': 48, 'BN': False, 'K': 8 },
+          {'L':  3, 'M': 48, 'BN': False, 'K': 12},
+          {'L':  1, 'M': 48, 'BN': False, 'K': 16},
+          
+          {'L':  6, 'M': 64, 'BN': False, 'K': 4 },    # Vertical Division 
+          {'L':  2, 'M': 64, 'BN': False, 'K': 8 },
+          {'L':  1, 'M': 64, 'BN': False, 'K': 12}]
 
 
-#
-#
-#
-#
-#
-## ==========
-## Playground
-## ==========
-#
-#from models import Conv_Net, Conv_Recusive_Net, Conv_Custom_Recusive_Net
-## CANDIDATES
-#model = 'playground'
-#single = {'L': 32, 'M': 64, 'BN': False} 
-#small = 'm{M}_l{L}'.format(**single)
-#
-##paths = [single]
-#paths = [{'L': 32, 'M': 31, 'BN': False, 'K': 4},   # Horizontal Division
-#         {'L': 32, 'M': 21, 'BN': False, 'K': 8},
-#         {'L': 32, 'M': 17, 'BN': False, 'K': 12},
-#         {'L': 32, 'M': 14, 'BN': False, 'K': 16},
-#         
-#         {'L': 6, 'M': 64, 'BN': False, 'K': 4},    # Vertical Division
-#         {'L': 2, 'M': 64, 'BN': False, 'K': 8},
-#         {'L': 1, 'M': 64, 'BN': False, 'K': 12},]
-#
-#collect(model, paths, small)
-#
-#
-##with open('./results/playground/m64_l32/dicts/Single_Non_Recursive_L_32_M_64_BN_False.pkl', 'rb') as inp:
-##    result = pickle.load(inp)
-###    result.name = 'L_32_M_64_BN_False'
-##    aa = [result]
-##
-##with open('./results/playground/m64_l32/dicts/Single_Non_Recursive_L_32_M_64_BN_False.pkl', 'wb') as f:
-##            pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
-#
-#result = torch.load('./results\playground\m64_l32\checkpoints\Ensemble_Non_Recursive_L_13_M_32_BN_False_K_8.t7', map_location='cpu')
-#aa = [result]
-#
-#
-### Round 1
-##ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
-##            {'L': 4,  'M': 36, 'BN': False, 'K': 16},
-##            {'L': 4, 'M': 54, 'BN': False, 'K': 8},
-##            {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
-##
-### Round 2
-##ensemble = [{'L': 16, 'M': 31, 'BN': False, 'K': 4} ,
-##            {'L': 4,  'M': 36, 'BN': False, 'K': 16},
-##            {'L': 4, 'M': 54, 'BN': False, 'K': 8},
-##            {'L': 8, 'M': 40, 'BN': False, 'K': 8}]
-##
-##ensemble = [{'L': 32, 'M': 31, 'BN': False, 'K': 4},   # Horizontal Division
-##            {'L': 32, 'M': 21, 'BN': False, 'K': 8},
-##            {'L': 32, 'M': 17, 'BN': False, 'K': 12},
-##            {'L': 32, 'M': 14, 'BN': False, 'K': 16},
-##            
-##            {'L': 6, 'M': 64, 'BN': False, 'K': 4},    # Vertical Division
-##            {'L': 2, 'M': 64, 'BN': False, 'K': 8},
-##            {'L': 1, 'M': 64, 'BN': False, 'K': 12},]
-##
-### Round 3
-##ensemble = [{'L': 12,  'M': 48, 'BN': False, 'K': 4},       # 3.2 M = 32
-##            {'L': 5,   'M': 48, 'BN': False, 'K': 8},
-##            {'L': 3,   'M': 48, 'BN': False, 'K': 12},
-##            {'L': 1,   'M': 48, 'BN': False, 'K': 16},
-##            {'L': 30,  'M': 32, 'BN': False, 'K': 4},       # 3.2 M = 32
-##            {'L': 13,  'M': 32, 'BN': False, 'K': 8},    
-##            {'L': 8,   'M': 32, 'BN': False, 'K': 12},     
-##            {'L': 5,   'M': 32, 'BN': False, 'K': 16}]    
-#
-#
+print('\nPlayground for L = 32, M = 64')
+name = 'L = 32, M = 64'
+net = Conv_Net()
+net = cuda(net)
+optimizer = optim.SGD(net.parameters(), 0.01, momentum=0.9, weight_decay=1e-5)
+epoch_time = measure_epoch(net, optimizer, criterion, epoch, trainloader, device) * 1
+inference_time = measure_inference(net, optimizer, criterion, testloader, device) * 1
+print('\nTraining Epoch Time : ', epoch_time)
+print('\nTest set Inference Time : ', inference_time)
+
+
+'L={}, M={}'
+
+
+# ====================
+# Playground Recursive
+# ====================
+
+from models import Conv_Recusive_Net
