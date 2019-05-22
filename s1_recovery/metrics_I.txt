@@ -1,0 +1,433 @@
+==> Preparing data..
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+
+
+ VGG Architectures
+
+
+
+VGG13 vs VGG9(x3)
+
+
+VGG13
+Round 0, time: 21.772220849990845
+Round 1, time: 14.68431305885315
+Round 2, time: 14.694750785827637
+Round 3, time: 14.708495140075684
+Round 0, time: 1.5328214168548584
+Round 1, time: 1.5413308143615723
+Round 2, time: 1.536522626876831
+Round 3, time: 1.5381247997283936
+
+Training Epoch Time :  16.46494150161743
+
+Test set Inference Time :  1.53719562292099
+
+
+VGG9 x 3
+Round 0, time: 26.570772886276245
+Round 1, time: 26.437286853790283
+Round 2, time: 26.420738220214844
+Round 3, time: 26.46710181236267
+Round 0, time: 3.783457040786743
+Round 1, time: 3.759995698928833
+Round 2, time: 3.851897954940796
+Round 3, time: 3.805510997772217
+
+Training Epoch Time :  26.47397083044052
+
+Test set Inference Time :  3.800210416316986
+
+
+
+VGG19 vs VGG9(x7)
+
+
+VGG19
+Round 0, time: 26.77519178390503
+Round 1, time: 26.85424518585205
+Round 2, time: 26.90734028816223
+Round 3, time: 26.916234731674194
+Round 0, time: 2.9529471397399902
+Round 1, time: 2.94998836517334
+Round 2, time: 2.9616711139678955
+Round 3, time: 2.9500813484191895
+
+Training Epoch Time :  26.86324954032898
+
+Test set Inference Time :  2.9536680579185486
+
+
+VGG9 x 7
+Round 0, time: 62.69934606552124
+Round 1, time: 62.30569791793823
+Round 2, time: 61.638286113739014
+Round 3, time: 63.167574644088745
+Round 0, time: 9.081867694854736
+Round 1, time: 8.937467336654663
+Round 2, time: 8.941282033920288
+Round 3, time: 9.153010129928589
+
+Training Epoch Time :  62.45272183418274
+
+Test set Inference Time :  9.028401613235474
+
+
+
+
+ Resnet Architectures
+
+
+
+Resnet56 vs Resnet20(x3)
+
+
+Resnet56
+Round 0, time: 16.400165557861328
+Round 1, time: 16.552942991256714
+Round 2, time: 16.75604009628296
+Round 3, time: 16.404046058654785
+Round 0, time: 1.315502405166626
+Round 1, time: 1.3054981231689453
+Round 2, time: 1.332237958908081
+Round 3, time: 1.344085931777954
+
+Training Epoch Time :  16.528295040130615
+
+Test set Inference Time :  1.3243265748023987
+
+
+Resnet20 x 3
+Round 0, time: 27.506112098693848
+Round 1, time: 27.879192352294922
+Round 2, time: 27.47128915786743
+Round 3, time: 28.05818510055542
+Round 0, time: 3.9481804370880127
+Round 1, time: 3.9535880088806152
+Round 2, time: 4.020634412765503
+Round 3, time: 3.9399659633636475
+
+Training Epoch Time :  27.728690147399902
+
+Test set Inference Time :  3.9655866026878357
+
+
+
+Resnet110 vs Resnet20(x6)
+
+
+Resnet110
+Round 0, time: 32.129252433776855
+Round 1, time: 32.046236753463745
+Round 2, time: 31.946213245391846
+Round 3, time: 32.01987886428833
+Round 0, time: 1.7649016380310059
+Round 1, time: 1.7525031566619873
+Round 2, time: 1.7585399150848389
+Round 3, time: 1.7560973167419434
+
+Training Epoch Time :  32.03539156913757
+
+Test set Inference Time :  1.7580060958862305
+
+
+Resnet20 x 6
+Round 0, time: 56.634358406066895
+Round 1, time: 57.53164219856262
+Round 2, time: 57.11800408363342
+Round 3, time: 56.645848751068115
+Round 0, time: 8.006777286529541
+Round 1, time: 8.16500473022461
+Round 2, time: 8.382036209106445
+Round 3, time: 8.372687101364136
+
+Training Epoch Time :  56.982459127902985
+
+Test set Inference Time :  8.231621026992798
+
+
+
+
+ Densenet Architectures
+
+
+
+Densenet121 vs DensenetCifar(x6)
+
+
+Densenet121
+Round 0, time: 68.1072998046875
+Round 1, time: 68.03039073944092
+Round 2, time: 67.9549913406372
+Round 3, time: 67.7688615322113
+Round 0, time: 4.662597179412842
+Round 1, time: 4.667548656463623
+Round 2, time: 4.662319898605347
+Round 3, time: 4.660264492034912
+
+Training Epoch Time :  67.96538215875626
+
+Test set Inference Time :  4.663177847862244
+
+
+DensenetCifar x 6
+Round 0, time: 223.39524865150452
+Round 1, time: 225.24700212478638
+Round 2, time: 220.33105993270874
+Round 3, time: 216.5693860054016
+Round 0, time: 11.647154092788696
+Round 1, time: 11.928394317626953
+Round 2, time: 11.88037395477295
+Round 3, time: 11.810152292251587
+
+Training Epoch Time :  221.3856697678566
+
+Test set Inference Time :  11.816514194011688
+
+
+
+
+ Playground Non Recursive Architectures
+
+
+Playground Non Recursive for L = 32, M = 64
+Round 0, time: 8.96955394744873
+Round 1, time: 9.006694078445435
+Round 2, time: 9.126291275024414
+Round 3, time: 9.10409927368164
+Round 0, time: 1.5785548686981201
+Round 1, time: 1.3590459823608398
+Round 2, time: 1.304368019104004
+Round 3, time: 1.2960333824157715
+
+Training Epoch Time :  9.051656067371368
+
+Test set Inference Time :  1.38449627161026
+
+
+Playground L=32, M=31, K=4
+Round 0, time: 37.17249894142151
+Round 1, time: 37.51102352142334
+Round 2, time: 37.45922803878784
+Round 3, time: 37.056429862976074
+Round 0, time: 5.314651966094971
+Round 1, time: 5.317222833633423
+Round 2, time: 5.260443687438965
+Round 3, time: 5.37125301361084
+
+Training Epoch Time :  37.299790382385254
+
+Test set Inference Time :  5.315888702869415
+
+
+Playground L=32, M=21, K=8
+Round 0, time: 74.4099555015564
+Round 1, time: 75.046062707901
+Round 2, time: 74.7151288986206
+Round 3, time: 75.33653521537781
+Round 0, time: 10.564618349075317
+Round 1, time: 11.077014207839966
+Round 2, time: 10.87070083618164
+Round 3, time: 10.913213014602661
+
+Training Epoch Time :  74.87691688537598
+
+Test set Inference Time :  10.856382191181183
+
+
+Playground L=32, M=17, K=12
+Round 0, time: 113.23974299430847
+Round 1, time: 112.6262993812561
+Round 2, time: 110.81429982185364
+Round 3, time: 111.17528891563416
+Round 0, time: 15.841316938400269
+Round 1, time: 15.632198810577393
+Round 2, time: 15.723088264465332
+Round 3, time: 15.801038026809692
+
+Training Epoch Time :  111.96390336751938
+
+Test set Inference Time :  15.749405443668365
+
+
+Playground L=32, M=14, K=16
+Round 0, time: 147.62495279312134
+Round 1, time: 149.33261466026306
+Round 2, time: 147.8803150653839
+Round 3, time: 146.9628767967224
+Round 0, time: 21.114287853240967
+Round 1, time: 20.95519995689392
+Round 2, time: 21.12395739555359
+Round 3, time: 21.762229681015015
+
+Training Epoch Time :  147.95018649101257
+
+Test set Inference Time :  21.23891443014145
+
+
+Playground L=30, M=32, K=4
+Round 0, time: 37.63949775695801
+Round 1, time: 37.391170501708984
+Round 2, time: 37.05354046821594
+Round 3, time: 36.93104791641235
+Round 0, time: 5.520581007003784
+Round 1, time: 5.229870796203613
+Round 2, time: 5.247671365737915
+Round 3, time: 5.292407274246216
+
+Training Epoch Time :  37.25380992889404
+
+Test set Inference Time :  5.322628438472748
+
+
+Playground L=13, M=32, K=8
+Round 0, time: 74.68186545372009
+Round 1, time: 74.23569917678833
+Round 2, time: 74.06366753578186
+Round 3, time: 74.69260907173157
+Round 0, time: 10.614272832870483
+Round 1, time: 10.679571390151978
+Round 2, time: 10.538657903671265
+Round 3, time: 10.716869831085205
+
+Training Epoch Time :  74.41845697164536
+
+Test set Inference Time :  10.637338638305664
+
+
+Playground L=8, M=32, K=12
+Round 0, time: 112.16855645179749
+Round 1, time: 111.99384069442749
+Round 2, time: 111.76917433738708
+Round 3, time: 111.60730147361755
+Round 0, time: 15.831679344177246
+Round 1, time: 15.708417654037476
+Round 2, time: 15.771061420440674
+Round 3, time: 15.768245935440063
+
+Training Epoch Time :  111.88471502065659
+
+Test set Inference Time :  15.76984691619873
+
+
+Playground L=5, M=32, K=12
+Round 0, time: 111.05038285255432
+Round 1, time: 110.7872166633606
+Round 2, time: 110.66839027404785
+Round 3, time: 110.66346311569214
+Round 0, time: 15.782292604446411
+Round 1, time: 15.661932945251465
+Round 2, time: 15.633121728897095
+Round 3, time: 15.692720413208008
+
+Training Epoch Time :  110.79235863685608
+
+Test set Inference Time :  15.692511916160583
+
+
+Playground L=12, M=48, K=4
+Round 0, time: 36.76099252700806
+Round 1, time: 37.55035901069641
+Round 2, time: 37.135488748550415
+Round 3, time: 37.875760316848755
+Round 0, time: 5.305440425872803
+Round 1, time: 5.2656331062316895
+Round 2, time: 5.346290826797485
+Round 3, time: 5.2142229080200195
+
+Training Epoch Time :  37.33064693212509
+
+Test set Inference Time :  5.282892465591431
+
+
+Playground L=4, M=48, K=8
+Round 0, time: 73.34234261512756
+Round 1, time: 73.98377966880798
+Round 2, time: 73.42444515228271
+Round 3, time: 74.00129246711731
+Round 0, time: 10.611502170562744
+Round 1, time: 10.53938603401184
+Round 2, time: 10.561185598373413
+Round 3, time: 10.45228385925293
+
+Training Epoch Time :  73.68796169757843
+
+Test set Inference Time :  10.541085183620453
+
+
+Playground L=3, M=48, K=12
+Round 0, time: 110.89574956893921
+Round 1, time: 110.76085448265076
+Round 2, time: 110.06912183761597
+Round 3, time: 110.53555822372437
+Round 0, time: 15.756735801696777
+Round 1, time: 15.827478170394897
+Round 2, time: 15.527091264724731
+Round 3, time: 15.72281551361084
+
+Training Epoch Time :  110.56531673669815
+
+Test set Inference Time :  15.708524882793427
+
+
+Playground L=1, M=48, K=16
+Round 0, time: 146.67455339431763
+Round 1, time: 146.3019073009491
+Round 2, time: 146.96357321739197
+Round 3, time: 146.8233995437622
+Round 0, time: 20.85532236099243
+Round 1, time: 20.974162101745605
+Round 2, time: 20.715482473373413
+Round 3, time: 20.756232738494873
+
+Training Epoch Time :  146.6908552646637
+
+Test set Inference Time :  20.825295746326447
+
+
+Playground L=6, M=64, K=4
+Round 0, time: 37.01527953147888
+Round 1, time: 36.94981002807617
+Round 2, time: 36.534780979156494
+Round 3, time: 37.80593490600586
+Round 0, time: 5.441953182220459
+Round 1, time: 5.209326267242432
+Round 2, time: 5.284187078475952
+Round 3, time: 5.242128610610962
+
+Training Epoch Time :  37.07644808292389
+
+Test set Inference Time :  5.294394135475159
+
+
+Playground L=2, M=64, K=8
+Round 0, time: 74.19962501525879
+Round 1, time: 74.60014462471008
+Round 2, time: 73.72445917129517
+Round 3, time: 73.40029525756836
+Round 0, time: 10.406492948532104
+Round 1, time: 10.41558027267456
+Round 2, time: 10.469630718231201
+Round 3, time: 10.438757181167603
+
+Training Epoch Time :  73.98112684488297
+
+Test set Inference Time :  10.432610273361206
+
+
+Playground L=1, M=64, K=12
+Round 0, time: 109.70370435714722
+Round 1, time: 109.80756378173828
+Round 2, time: 109.42595887184143
+Round 3, time: 110.38525223731995
+Round 0, time: 15.756755113601685
+Round 1, time: 15.691796779632568
+Round 2, time: 15.775008201599121
+Round 3, time: 15.76287317276001
+
+Training Epoch Time :  109.83061593770981
+
+Test set Inference Time :  15.746603906154633
