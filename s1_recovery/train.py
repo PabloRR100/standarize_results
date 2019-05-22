@@ -42,7 +42,7 @@ def test(net, optimizer, criterion, dataloader, device):
     return
 
 
-@timeit
+#@timeit
 def run_epoch(net, optimizer, criterion, trainloader, testloader, device):
     
     net.to(device)
